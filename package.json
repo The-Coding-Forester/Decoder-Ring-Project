@@ -10,7 +10,8 @@
     "start": "live-server",
     "start:solution": "npm run -it docker:build && npm run docker:run",
     "test": "mocha test",
-    "test:solution": "npm run docker:build && npm run docker:test"
+    "test:solution": "npm run docker:build && npm run docker:test",
+    "test:watch": "nodemon -3 js --watch src --watch test --exec \"npm test\""
   },
   "keywords": [],
   "author": "",
@@ -18,6 +19,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "live-server": "^1.2.1",
-    "mocha": "^8.1.3"
+    "mocha": "^8.1.3",
+    "nodemon": "^2.0.7"
   }
 }
