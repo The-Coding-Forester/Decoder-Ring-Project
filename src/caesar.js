@@ -8,6 +8,9 @@ const caesarModule = (function () {
   //function needs to know alphabet, use array for indexing
   const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   //user inputted message needs to be turned into array for index shifting
+  function getArrayFromString(input) {
+    return Array.from(input);
+  }
   //spaces in user message need to remain equal to " " and not be subject to shift
   //
   //user inputted message needs to be returned to a string
