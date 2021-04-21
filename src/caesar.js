@@ -35,7 +35,7 @@ const caesarModule = (function () {
 
   function caesar(input, shift, encode = true) {
     // your solution code here
-    if (shift === 0 || shift > 25 || shift < -25) {
+    if (!shift || shift === 0 || shift > 25 || shift < -25) {
       // alphabet is 26 characters (0 through 25), you cannot shift beyond that in either direction
       return false;
     }
