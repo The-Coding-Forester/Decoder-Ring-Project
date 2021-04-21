@@ -29,8 +29,7 @@ const polybiusModule = (function () {
     return Array.from(string);
   }
 
-  function polybius(input, encode = true) {
-    // your solution code here
+  function encodeInput(input) {
     //take input and make it lower case and make it into an array
     const startingArray = getArrayFromString(input.toLowerCase());
     const encodedArray = [];
@@ -49,10 +48,43 @@ const polybiusModule = (function () {
           }
         })
       }
+      return encodedArray;
     });
-    const encodedString = encodedArray.join("")
+    return encodedArray.join("");
+  }
+
+  function decodeInput(input) {
+    const startingArray = getArrayFromString(input);
+    const decodedArray = [];
+    for (let i = 0; i < startingArray.length; i++) {
+      const index = startingArray[i];
+      if (index === " ") {
+        decodedArray.push(index);
+      }
+      else {
+        let columnNum = index;
+        let rowNum = startingArray[i + 1];
+        i = i + 1
+        decodedArray.push(polybiusSquare[rowNum][columnNum])
+      }
+    }
+    return decodedArray.join("");
+  }
+
+
+
+  function polybius(input, encode = true) {
+    // your solution code here
+    if (encode === false) {
+      if (input.replace(" ", "").length % 2 > 0) {
+        return false;
+      } else {
+        return decodeInput(input);
+      }
+    }
+
     if (encode) {
-      return encodedString;
+      return encodeInput(input);
     }
   }
 
