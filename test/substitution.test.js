@@ -23,4 +23,19 @@ describe("substitution", () => {
       expect(actual).to.be.false;
     })
   })
+  describe("encoding a message", () => {
+    it("should encode a message using the substitute alphabet", () => {
+      const actual = caesar("thinkful", "xoyqmcgrukswaflnthdjpzibev");
+      const expected = "jrufscpw";
+      expect(actual).to.equal(expected);
+    });
+    it("should convert inputted string to lower case", () => {
+      const actual = caesar("Thinkful", "xoyqmcgrukswaflnthdjpzibev");
+      const expected = "jrufscpw";
+      expect(actual).to.equal(expected);
+    });
+  })
+  describe("decoding a message", () => {
+
+  })
 })

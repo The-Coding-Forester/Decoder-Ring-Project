@@ -26,6 +26,7 @@ const caesarModule = (function () {
       //if index of array is equal to a letter, then shift that letter and push to new array. Else, return original index.
       //spaces in user message need to remain equal to " " and not be subject to shift
       if (alphabet.indexOf(character) === -1) {
+        // -1 means that the character is not in the array, in this case making it a special character
         return character
       }
       return shiftLetter(alphabet.indexOf(character), shift);

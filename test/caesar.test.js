@@ -34,7 +34,7 @@ describe("caesar", () => {
       const actual = caesar("thinkful", 3);
       const expected = "wklqnixo";
       expect(actual).to.equal(expected);
-    })
+    });
     it("should convert inputted string to lower case", () => {
       const expected = "phvvdjh";
       const actual = caesar("Message", 3);
