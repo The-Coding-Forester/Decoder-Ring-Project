@@ -5,9 +5,36 @@
 
 const substitutionModule = (function () {
   // you can add any code you want within this function scope
+  const trueAlphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+  function checkForDuplicateCharacters(newAlphabetArray) {
+    newAlphabetArray.forEach(character => {
+      let filterLength = newAlphabetArray.filter((index) => character === index);
+      if (!filterLength > 1) {
+        return false
+      }
+    });
+  }
+
+  function getArrayFromString(string) {
+    return Array.from(string);
+  }
 
   function substitution(input, alphabet, encode = true) {
-    // your solution code here
+    // test to make sure alphabet length is 26 or missing
+    if (!alphabet || alphabet.length !== 26) {
+      return false;
+    }
+    if (!input) {
+      return false;
+    }
+    const string = input.toLowerCase();
+    const newAlphabet = alphabet.toLowerCase();
+    const newAlphabetArray = getArrayFromString(newAlphabet)
+    if (!checkForDuplicateCharacters(newAlphabetArray)) {
+      return false;
+    }
+
   }
 
   return {
