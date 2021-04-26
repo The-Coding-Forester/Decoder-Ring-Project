@@ -7,12 +7,9 @@ const substitutionModule = (function () {
   // you can add any code you want within this function scope
   const trueAlphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-  function checkForDuplicateCharacters(newAlphabetArray) {
-    newAlphabetArray.forEach(character => {
-      let filterLength = newAlphabetArray.filter((index) => character === index);
-      if (!filterLength > 1) {
-        return false
-      }
+  function hasDuplicateValues(newAlphabetArray) {
+    return newAlphabetArray.some((character) => {
+      return newAlphabetArray.filter((index) => character === index).length > 1;
     });
   }
 
@@ -20,37 +17,26 @@ const substitutionModule = (function () {
     return Array.from(string);
   }
 
-  function isSpecialCharacter(character) {
-    if (trueAlphabet.indexOf(character) !== -1) {
-      // -1 means that the character is not in the array, in this case making it a special character
-      return false;
-    }
-    return true;
-  }
-
-
-  function getIndexArrayFromString(string) {
-    //convert string to array
-    let indexArray = getArrayFromString(string).map((character) => {
-      //create new array with letter values replaced by their corresponding index in the trueAlphabet
-      if (isSpecialCharacter) {
+  function encodeMessage(inputArray, newAlphabetArray) {
+    return inputArray.map((character) => {
+      if (character === " ") {
         return character;
+      } else {
+        let desiredLetter = trueAlphabet.find((letter) => letter === character);
+        return newAlphabetArray[trueAlphabet.indexOf(desiredLetter)];
       }
-      return trueAlphabet.indexOf(character);
-    });
-    return indexArray;
+    }).join("")
   }
 
-  function encodeString(string, newAlphabetArray) {
-    //call getIndexArrayFromString function and use the results to return a array of characters with the corresponding index from the newAlphabetArray
-    let encodedArray = getIndexArrayFromString(string).map((indexNum) => {
-      if (isSpecialCharacter) {
-        return indexNum;
+  function decodeMessage(inputArray, newAlphabetArray) {
+    return inputArray.map((character) => {
+      if (character === " ") {
+        return character;
+      } else {
+        let desiredCharacter = newAlphabetArray.find((indexCharacter) => indexCharacter === character);
+        return trueAlphabet[newAlphabetArray.indexOf(desiredCharacter)];
       }
-      return newAlphabetArray[indexNum];
-    });
-    //convert newly created array to a string
-    return encodedArray.join("");
+    }).join("")
   }
 
   function substitution(input, alphabet, encode = true) {
@@ -61,17 +47,19 @@ const substitutionModule = (function () {
     if (!input) {
       return false;
     }
-    const string = input.toLowerCase();
-    const newAlphabet = alphabet.toLowerCase();
-    const newAlphabetArray = getArrayFromString(newAlphabet)
-    if (!checkForDuplicateCharacters(newAlphabetArray)) {
+
+    const inputArray = getArrayFromString(input.toLowerCase());
+    const newAlphabetArray = getArrayFromString(alphabet.toLowerCase());
+
+    if (hasDuplicateValues(newAlphabetArray)) {
       return false;
     }
     if (encode) {
-      console.log(encodeString(string, newAlphabetArray));
-      return encodeString(string, newAlphabetArray);
+      return encodeMessage(inputArray, newAlphabetArray);
     }
-    console.log(getIndexArrayFromString(string));
+    if (!encode) {
+      return decodeMessage(inputArray, newAlphabetArray);
+    }
   }
 
   return {
