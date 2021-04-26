@@ -7,6 +7,7 @@ const substitutionModule = (function () {
   // you can add any code you want within this function scope
   const trueAlphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
+  //test to see if any value in the newAlphabetArray appears more than once
   function hasDuplicateValues(newAlphabetArray) {
     return newAlphabetArray.some((character) => {
       return newAlphabetArray.filter((index) => character === index).length > 1;
@@ -17,6 +18,7 @@ const substitutionModule = (function () {
     return Array.from(string);
   }
 
+  //encode message by finding which letter in the trueAlphabet matches the inputArray character and using the index of the trueAlphabet character when returning a character from the substitute alphabet
   function encodeMessage(inputArray, newAlphabetArray) {
     return inputArray.map((character) => {
       if (character === " ") {
@@ -28,6 +30,7 @@ const substitutionModule = (function () {
     }).join("")
   }
 
+  //decode message by finding which character in the substitute alphabet matches the inputArray character and using the index of the substitute character when returning a letter from the trueAlphabet
   function decodeMessage(inputArray, newAlphabetArray) {
     return inputArray.map((character) => {
       if (character === " ") {

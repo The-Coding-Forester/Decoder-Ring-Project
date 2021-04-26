@@ -52,6 +52,7 @@ const polybiusModule = (function () {
   function decodeInput(input) {
     const startingArray = getArrayFromString(input);
     const decodedArray = [];
+    //use a traditional for loop for ease of making two values into one return (i.e. 2 numbers returning 1 letter)
     for (let i = 0; i < startingArray.length; i++) {
       const index = startingArray[i];
       if (index === " ") {
