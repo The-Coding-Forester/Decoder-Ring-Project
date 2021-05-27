@@ -2,7 +2,7 @@
 
 > You're planning a surprise birthday party for one of your friends who _loves_ escape rooms and puzzles. What better way to practice your new coding skills than to build an application that will help you encode and decode all kinds of fun messages?
 
-![Home view of Decoder Ring](./images/home.png)
+![Home view of Decoder Ring](./src/home.png)
 
 This project is designed to test your ability to build complex algorithms as well as write unit tests with Mocha & Chai to test your algorithms. Before taking on this module, you should be comfortable with the learning objectives listed below. You will not need to make any edits to HTML or CSS for this project.
 
